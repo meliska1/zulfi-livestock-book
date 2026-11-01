@@ -1,0 +1,30 @@
+{
+  "name": "zulfi-livestock-booking",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "deploy": "opennextjs-cloudflare build && opennextjs-cloudflare deploy",
+    "preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview"
+  },
+  "dependencies": {
+    "next": "^15.3.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "@supabase/supabase-js": "^2.49.0",
+    "luxon": "^3.6.0",
+    "xlsx": "^0.18.5",
+    "html-to-image": "^1.11.13"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "@types/luxon": "^3.4.0",
+    "typescript": "^5.8.0",
+    "@opennextjs/cloudflare": "^1.14.0",
+    "wrangler": "^4.0.0"
+  }
+}

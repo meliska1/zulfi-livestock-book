@@ -1,0 +1,2 @@
+import {db,isAdmin,json} from '@/lib/server';
+export async function POST(req:Request){if(!await isAdmin())return json({error:'غير مصرح'},401);const {id}=await req.json();if(!/^[0-9a-f-]{36}$/i.test(String(id)))return json({error:'معرف غير صالح'},400);const {error}=await db().from('bookings').update({cancelled_at:new Date().toISOString()}).eq('id',id).is('cancelled_at',null);return error?json({error:'تعذر الإلغاء'},500):json({ok:true})}

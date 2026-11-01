@@ -1,0 +1,3 @@
+import {db,monday,windowOpen,json} from '@/lib/server';
+export const dynamic='force-dynamic';
+export async function GET(){try{const client=db();const [{data,error},{data:settings,error:se}]=await Promise.all([client.from('bookings').select('number').eq('week_date',monday()).is('cancelled_at',null),client.from('booking_settings').select('mode').eq('id',1).single()]);if(error||se)throw error||se;const mode=settings?.mode||'auto';return json({week:monday(),numbers:(data||[]).map(x=>x.number),open:mode==='open'||mode==='auto'&&windowOpen(),mode});}catch{return json({error:'تعذر الاتصال بقاعدة البيانات'},503)}}
